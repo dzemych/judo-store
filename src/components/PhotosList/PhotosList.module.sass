@@ -1,0 +1,141 @@
+@use '../../assets/styles/media'
+
+
+.container
+  width: 100%
+  position: relative
+  padding-top: 2rem
+
+.wrapper
+  width: 100%
+
+.title
+  color: #222222
+  margin-bottom: 33px
+  margin-top: 0
+  font-family: BigNoodle, sans-serif
+  letter-spacing: .07rem
+  font-weight: 500
+
+
+.list
+  display: flex
+  flex-direction: column
+  width: 100%
+  & > div:not(:first-child)
+    margin-top: 17px
+
+.item
+  -webkit-tap-highlight-color: transparent
+  width: 100%
+  height: 55vw
+  & img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    object-position: center
+
+@media (min-width: media.$small)
+  .container
+    padding: 2rem 2rem 0
+
+  .list > div:not(:first-child)
+    margin-top: 22px
+
+@media (min-width: media.$medium)
+  .container
+    padding: 0
+
+  .secondary
+    margin-top: 2rem
+    padding: 0 1rem
+
+  .secondary .list
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    & > div
+      width: 37vw
+      height: 29vw
+      margin-top: 0
+      margin-right: 0
+    & > div:nth-child(n + 3)
+      margin-top: 3vw
+    & > div:nth-child(odd)
+      margin-right: 2.2vw
+
+  .primary .list
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    & > div:nth-child(2n)
+      margin-right: 2.2vw
+    & > div:not(:first-child)
+      margin-top: 3vw
+      width: 38vw
+      height: 29vw
+    & > div:first-child
+      margin: 0
+      height: 45vw
+
+@media (min-width: media.$large)
+  .list
+    display: initial
+
+  .secondary
+    padding: 0
+
+  .secondary .list
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    margin-left: 1rem
+    & > div:nth-child(n + 3)
+      margin-top: 0
+    & > div:nth-child(odd)
+      margin-right: 0
+    & > div
+      width: 22.5vw
+      height: 15.5vw
+      margin-top: 0
+      margin-right: 0
+    & > div:not(:nth-child(3n))
+      margin-right: 2.2vw
+    & > div:nth-child(n + 4)
+      margin-top: 2.2vw
+
+  .primary .wrapper
+    padding-left: 1.5vw
+    overflow: auto
+
+  .primary .list
+    display: initial
+    & > div
+      display: inline-block
+    & > div:nth-child(even)
+      margin-right: 0
+    & > div:first-child
+      height: 40vw
+    & > div:not(:first-child)
+      margin-top: 2vw
+    // Divs width
+    & > div:first-child
+      height: 38vw
+    & > div:not(:first-child)
+      width: 22.5vw
+      height: 15.5vw
+    & > div:nth-child(12n + 5)
+      float: left
+      width: 47.5vw
+      height: 33.5vw
+      margin-right: 2.5vw
+    & > div:nth-child(12n + 12)
+      float: right
+      width: 47.5vw
+      height: 33.5vw
+      margin-left: 1.5vw
+    & > div:nth-child(6n + 2), & > div:nth-child(6n + 3)
+      margin-right: 2.5vw
+    & > div:nth-child(12n + 13)
+      margin-right: 0
+      margin-left: 0

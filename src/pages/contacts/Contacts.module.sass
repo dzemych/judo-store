@@ -1,0 +1,135 @@
+@use '../../assets/styles/colors'
+@use '../../assets/styles/media'
+
+
+.container
+  position: relative
+  width: 100%
+  min-height: 100vh
+
+.wrapper
+  width: 100%
+  height: 100%
+  margin: 0 auto
+  max-width: 600px
+  background: colors.$primary
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: flex-start
+  font-family: BigNoodle, sans-serif
+  letter-spacing: .12rem
+  color: #f5f5f5
+  padding: 6.5rem 1.5rem 5rem
+
+.loader_container
+  margin: 30vh auto 60vh
+  max-width: 60vw
+
+.title
+  text-transform: uppercase
+  letter-spacing: .1rem
+  z-index: 1
+
+.contacts
+  z-index: 1
+  width: 100%
+  font-size: 1.3rem
+  letter-spacing: .12rem
+  line-height: 110%
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+
+.row
+  z-index: 1
+  display: flex
+  flex-direction: row
+  width: 100%
+  margin-bottom: .4rem
+
+.row_title
+  width: 40%
+  font-weight: 500
+  text-align: left
+
+.row_text
+  width: 60%
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  font-weight: 400
+  font-size: 1.15rem
+  transform: translateY(-7%)
+  flex-direction: column
+  & > span:not(:first-child)
+    margin-top: 2px
+
+.social_container
+  min-width: 8rem
+  margin-top: 2.5rem
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: center
+  & > div:not(:first-child)
+    margin-left: 1.5rem
+
+.icon_container
+  cursor: pointer
+  z-index: 1
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 3.8rem
+  height: 3.8rem
+  border: 1px solid #f5f5f5
+  border-radius: 10px
+  transition: 280ms
+  &:hover
+    transform: scale(1.1)
+  & svg
+    color: #f5f5f5
+    font-size: 2.3rem
+
+@media (min-width: media.$medium)
+  .wrapper
+    max-width: 80vw
+
+  .row_title
+    width: 30%
+
+  .row_text
+    width: 70%
+
+@media (min-width: media.$large)
+  .wrapper
+    max-width: 70vw
+    margin-top: 28px
+
+  .title
+    font-size: 2.2rem
+    margin-bottom: 1.5rem
+
+  .contacts
+    font-size: 1.65rem
+    letter-spacing: .15rem
+
+  .row_text
+    font-size: 1.3rem
+
+  .icon_container
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 5rem
+    height: 5rem
+    border: 1px solid #f5f5f5
+    border-radius: 10px
+    & svg
+      color: #f5f5f5
+      font-size: 2.8rem
+
+@media (min-width: media.$extLarge)
+  .wrapper
+    max-width: 60vw

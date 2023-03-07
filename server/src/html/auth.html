@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+   <title>Judo Novator admin - авторизація</title>
+</head>
+<body>
+   <main>
+   </main>
+</body>
+
+<style>
+    * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        background: #fff;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .popup_error {
+        position: absolute;
+        z-index: 1000;
+        background: rgba(37, 35, 35, 0.8);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .popup_wrapper {
+        font-family: 'Roboto', sans-serif;
+        position: absolute;
+        margin: 0 auto;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -60%);
+        z-index: 1001;
+        background: #E7E7E7;
+        border-radius: 7px;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .popup_wrapper span {
+        color: #D32F2F;
+        font-weight: 500;
+        font-size: 1.15rem;
+        margin-bottom: 15px;
+    }
+
+    main {
+        width: fit-content;
+        padding: 20px;
+        border-radius: 7px;
+        top: 50%;
+        transform: translateY(40%);
+        margin: 0 auto;
+    }
+
+    form {
+        width: fit-content;
+    }
+
+    .inputs_container {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+
+    .title {
+        font-weight: 500;
+        margin: 0 auto;
+        margin-bottom: 15px;
+    }
+
+    .subTitle {
+        font-weight: 400;
+        font-size: 1.1rem;
+        margin: 0;
+        margin-bottom: 5px;
+        align-self: flex-start;
+    }
+
+    .input_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .input_wrapper input {
+        border: none;
+        max-width: 100%;
+        width: 100%;
+        border-bottom: 2px solid #868686;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        background: #E7E7E7;
+        color: #1f1f1f;
+        padding: 13px;
+        transition: 180ms;
+        outline: none;
+        font-size: 1.1rem;
+    }
+
+    .input_wrapper input:hover {
+        background: #DFDFDF;
+    }
+
+    .input_wrapper input:focus {
+        border-bottom: 2px solid #0066CE;
+    }
+
+    .input_wrapper label {
+        margin-bottom: 5px;
+    }
+
+    #email-input {
+        margin-bottom: 17px
+    }
+
+    .input_error input {
+        border-bottom: 2px solid #D32F2F;
+    }
+
+    .input_error input::placeholder {
+        color: #D32F2F;
+    }
+
+    .input_error input:focus {
+        border-bottom: 2px solid #D32F2F;
+    }
+
+    .input_error label {
+        color: #D32F2F;
+    }
+
+    .input_error_text {
+        color: #D32F2F;
+        font-size: .85rem;
+        margin-left: 6px;
+    }
+
+    .btns_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .primary_btn, .secondary_btn {
+        outline: none;
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 200ms;
+    }
+
+    .primary_btn {
+        background: #1976D2;
+        border-radius: 5px;
+        padding: 10px 20px;
+        color: whitesmoke;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .primary_btn:hover {
+        background: #155fa8;
+    }
+
+    .secondary_btn {
+        background: transparent;
+        padding: 10px 20px;
+        color: #1976D2;
+        font-size: 1.05rem;
+    }
+
+    @media (max-width: 600px) {
+        .popup_wrapper {
+            width: 100%;
+            max-width: 90vw;
+        }
+    }
+</style>
+
+<script>
+   const loginLayout = `<form action="#" class="inputs_container">
+         <h1 class="title">Авторизація</h1>
+
+         <div class="input_wrapper" id="email_input_wrapper">
+            <label for="email-input">Імейл</label>
+            <input type="email" name="email" id="email-input" placeholder="Імейл">
+         </div>
+
+         <div class="input_wrapper" id="pwd_input_wrapper">
+            <label for="pwd-input">Пароль</label>
+            <input type="password" name="password" id="pwd-input" placeholder="Пароль">
+         </div>
+
+         <div class="btns_container" style="margin-top: 35px;">
+            <button type="submit" class="primary_btn">
+               Увійти
+            </button>
+
+            <div class="secondary_btn" id="forgotPassword_btn">
+               Забув пароль
+            </div>
+         </div>
+      </form>`
+   const forgotLayout = `<form action="#" class="inputs_container">
+         <h1 class="title">Забув пароль</h1>
+
+         <div class="input_wrapper" id="email_input_wrapper">
+            <label for="email-input">
+               <h3 class="subTitle">Імейл для відновлення паролю</h3>
+            </label>
+            <input type="email" name="email" id="email-input" placeholder="Імейл">
+         </div>
+
+         <div class="btns_container">
+            <button type="submit" class="primary_btn">
+               Відновити
+            </button>
+
+            <div class="secondary_btn" id="login_btn">
+               Увійти
+            </div>
+         </div>
+      </form>`
+   const forgotSuccessLayout = `<div class="sent_container">
+         <h3 style="font-weight: 500">
+            Посилання для відновлення паролю було відправлено вам на імейл
+         </h3>
+
+         <div class="btns_container">
+            <button class="primary_btn" id="login_btn">
+               Увійти
+            </button>
+         </div>
+      </div>`
+   const resetPasswordLayout = `<form action="#" class="inputs_container">
+         <h1 class="title">Змінити пароль</h1>
+
+         <div class="input_wrapper" id="pwd_wrapper">
+            <label for="pwd-input">Новий пароль</label>
+            <input type="password" name="password" id="pwd-input" placeholder="Пароль">
+         </div>
+
+         <div class="input_wrapper" id="confirmPwd_wrapper" style="margin-top: 15px">
+            <label for="confirmPwd-input">Підтвердіть пароль</label>
+            <input type="password" name="confirmPwd" id="confirmPwd-input" placeholder="Пароль">
+         </div>
+
+         <div class="btns_container" style="margin-top: 25px">
+            <button type="submit" class="primary_btn" id="resetPwd_btn">
+               Змінити
+            </button>
+         </div>
+      </form>`
+   const resetSuccessLayout = `<div class="sent_container">
+         <h3 style="font-weight: 500">
+            Посилання для відновлення паролю було відправлено вам на імейл
+         </h3>
+
+         <div class="btns_container">
+            <button class="primary_btn" id="login_btn">
+               Увійти
+            </button>
+         </div>
+      </div>`
+
+   const getPopUpError = () => {
+      const node = document.createElement('div')
+
+      node.classList.add('popup_error')
+      node.id = 'popup'
+      node.innerHTML = `<div class="popup_wrapper">
+            <span>
+               Посилання для відновлення паролю застаріле або невірне, спробуйте відновити пароль ще раз
+            </span>
+
+            <button class="primary_btn" id="login_btn">
+               Ок
+            </button>
+         </div>`
+
+      return node
+   }
+
+   const getInputError = (id, text) => {
+      const node = document.createElement('span')
+
+      node.id = id
+      node.innerText = text
+      node.classList.add('input_error_text')
+
+      return node
+   }
+
+   const main = document.querySelector('main')
+
+   const goTo = (path) => {
+      return function(e) {
+         e.preventDefault()
+         window.location = `/admin#${path}`
+      }
+   }
+
+   async function login(e) {
+      if (e)
+         e.preventDefault()
+
+      const emailVal = document.getElementById('email-input').value
+      const pwdVal = document.getElementById('pwd-input').value
+
+      const emailWrapper = document.getElementById('email_input_wrapper')
+      const pwdWrapper = document.getElementById('pwd_input_wrapper')
+
+      emailWrapper.classList.remove('input_error')
+      pwdWrapper.classList.remove('input_error')
+
+      if (!emailVal)
+         emailWrapper.classList.add('input_error')
+
+      if (!pwdVal)
+         pwdWrapper.classList.add('input_error')
+
+      if (emailVal && pwdVal) {
+         const data = JSON.stringify({ email: emailVal, password: pwdVal })
+
+         const res = await fetch('/api/auth/login', {
+            method: 'post',
+            body: data,
+            headers: { 'Content-Type': 'application/json' }
+         })
+
+         if (res.status > 300) {
+            emailWrapper.classList.add('input_error')
+            pwdWrapper.classList.add('input_error')
+         } else {
+            window.location.reload()
+         }
+      }
+   }
+
+   async function forgotPassword(e) {
+      if (e)
+         e.preventDefault()
+
+      const emailVal = document.getElementById('email-input').value
+      const emailWrapper = document.getElementById('email_input_wrapper')
+
+      emailWrapper.classList.remove('input_error')
+
+      if (emailVal) {
+         const res = await fetch('http://localhost:5000/api/auth/forgotPassword', {
+            method: 'post',
+            body: JSON.stringify({ email: emailVal }),
+            headers: { 'Content-Type': 'application/json' }
+         })
+
+         if (res.status > 300) {
+            emailWrapper.classList.add('input_error')
+         } else {
+            main.innerHTML = forgotSuccessLayout
+            document.getElementById('login_btn').addEventListener('click', goTo('login'))
+         }
+      } else {
+         emailWrapper.classList.add('input_error')
+      }
+   }
+
+   async function resetPwd(e) {
+      if (e)
+         e.preventDefault()
+
+      const pwdWrapper = document.getElementById('pwd_wrapper')
+      const confirmPwdWrapper = document.getElementById('confirmPwd_wrapper')
+
+      const pwdValue = document.getElementById('pwd-input').value
+      const confirmValue = document.getElementById('confirmPwd-input').value
+
+      pwdWrapper.classList.remove('input_error')
+      confirmPwdWrapper.classList.remove('input_error')
+      const pwdError = document.getElementById('pwd_error')
+      const confirmError = document.getElementById('confirm_error')
+
+      if (pwdError) pwdError.remove()
+      if (confirmError) confirmError.remove()
+
+      if (!pwdValue)
+         pwdWrapper.classList.add('input_error')
+
+      if (!confirmValue)
+         confirmPwdWrapper.classList.add('input_error')
+
+      if (pwdValue && confirmValue) {
+         let valid = true
+
+         // Check for min length of 8
+         if (pwdValue.length < 8) {
+            valid = false
+
+            pwdWrapper.classList.add('input_error')
+            pwdWrapper.append(getInputError('pwd_error', 'Пароль має містити мінімум 8 літер'))
+         }
+
+         // Check for at least one digit
+         if (valid && !(pwdValue.match(/\d/))) {
+            valid = false
+
+            pwdWrapper.classList.add('input_error')
+            pwdWrapper.append(getInputError('pwd_error', 'Пароль має містити мінімум одну цифру'))
+         }
+
+         // Check for at least one uppercase letter
+         if (valid) {
+            const isUpperCase = [...pwdValue].reduce((acc, ch) => {
+               if (!isNaN(ch * 1))
+                  return acc
+
+               if (ch === ch.toLowerCase())
+                  return acc
+
+               if (ch === ch.toUpperCase())
+                  acc = true
+
+               return acc
+            }, false)
+
+            if (!isUpperCase) {
+               valid = false
+
+               pwdWrapper.classList.add('input_error')
+               pwdWrapper.append(getInputError('pwd_error', 'Пароль має містити мінімум одну велику літеру'))
+            }
+         }
+
+         // Check if password and confirm password are the same
+         if (valid && (pwdValue !== confirmValue)) {
+            valid = false
+
+            confirmPwdWrapper.classList.add('input_error')
+            confirmPwdWrapper.appendChild(getInputError('confirm_error', 'Паролі не співпадають'))
+         }
+
+         if (valid) {
+            // Make request
+            const res = await fetch('/api/auth/resetPassword', {
+               method: 'post',
+               body: JSON.stringify({ password: pwdValue, passwordConfirm: confirmValue }),
+               headers: { 'Content-Type': 'application/json' }
+            })
+
+            if (res.status > 300) {
+               document.body.append(getPopUpError())
+               document.getElementById('login_btn').addEventListener('click', goTo('login'))
+            } else {
+               main.innerHTML = resetSuccessLayout
+               document.getElementById('login_btn').addEventListener('click', goTo('login'))
+            }
+         }
+      }
+   }
+
+   function onHashChange(e) {
+      if (e)
+         e.preventDefault()
+
+      const popUp = document.getElementById('popup')
+      if (popUp)
+         popUp.remove()
+
+      const hash = window.location.hash
+
+      if (hash === '#forgotPassword') {
+         main.innerHTML = forgotLayout
+         form = document.querySelector('form')
+      }
+      else if (hash === '#resetPassword') {
+         main.innerHTML = resetPasswordLayout
+         form = document.querySelector('form')
+      }
+      else {
+         main.innerHTML = loginLayout
+         form = document.querySelector('form')
+      }
+
+      if (form) {
+         const forgotBtn = document.getElementById('forgotPassword_btn')
+         const loginBtn = document.getElementById('login_btn')
+         const resetBtn = document.getElementById('resetPwd_btn')
+
+         if (resetBtn) {
+            form.addEventListener('submit', resetPwd)
+         }
+
+         if (forgotBtn) {
+            forgotBtn.addEventListener('click', goTo('forgotPassword'))
+            form.addEventListener('submit', login)
+         }
+
+         if (loginBtn) {
+            loginBtn.addEventListener('click', goTo('login'))
+            form.addEventListener('submit', forgotPassword)
+         }
+      }
+   }
+
+   window.addEventListener('hashchange', onHashChange)
+
+   onHashChange()
+</script>
+
+</html>

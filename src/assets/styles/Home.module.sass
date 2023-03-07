@@ -1,0 +1,55 @@
+@use 'colors'
+@use 'media'
+
+
+.container
+  width: 100%
+  background: colors.$primary
+
+.wrapper
+  position: relative
+  padding: 2.8rem 0
+  width: 100%
+
+.hr
+  height: 1px
+  width: 100%
+  border: none
+  background: white
+  margin: 0 20px
+
+.slider_wrapper
+  margin: 55px 0 65px
+
+.list_wrapper
+  width: 100%
+  padding: 0 6.6vw
+
+.album_wrapper
+  margin-top: 45px !important
+  margin-bottom: 10px !important
+
+@media (min-width: media.$small)
+  .list_wrapper
+    padding: 0 !important
+
+@media (min-width: media.$medium)
+  .wrapper
+    padding-top: 3rem
+
+@media (min-width: media.$large)
+  .wrapper
+    padding-top: 4rem
+
+  .list_wrapper
+    width: 90vw
+    margin: 0 auto
+
+@media (min-width: media.$extLarge)
+  .wrapper
+    padding-top: 5rem
+    padding-bottom: 9rem
+
+  .album_wrapper
+    margin-top: 3rem
+    margin-bottom: 6rem

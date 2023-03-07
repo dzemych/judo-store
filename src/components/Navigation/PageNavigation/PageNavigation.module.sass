@@ -1,0 +1,44 @@
+.navigation_container
+  margin-top: 4rem
+  width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.btns_container
+  width: 75%
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  & > div:only-child
+    margin: 0 auto
+
+.btn_wrapper
+  cursor: pointer
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: center
+
+.btn_text
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  font-family: BigNoodle, sans-serif
+  font-size: 1.9rem
+  line-height: 50%
+  transform: translateY(7%)
+
+.prev_arrow, .next_arrow
+  border-bottom: 2px solid black
+  border-left: 2px solid black
+  height: 2rem
+  width: 2rem
+  border-bottom-left-radius: 4px
+
+.prev_arrow
+  transform: rotate(45deg) translate(12%, -12%)
+
+.next_arrow
+  transform: rotate(-135deg) translate(12%, -12%)

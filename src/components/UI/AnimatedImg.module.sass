@@ -1,0 +1,85 @@
+@use '../../assets/styles/colors'
+
+.container
+  cursor: pointer
+  position: relative
+  width: 100%
+  height: 100%
+  background: transparent
+  border: none
+  z-index: 0
+  overflow: hidden
+
+
+.active_hover
+  &:hover .backdrop
+    background: rgba(95, 92, 92, 0.0)
+  &:hover .img_container
+    transform: scale(1.075) !important
+
+.img_container
+  position: relative
+  transition: 350ms
+  width: 100%
+  height: 100%
+  overflow: hidden
+  display: flex
+  justify-content: center
+  align-items: center
+  & img
+    border: none
+    width: 100%
+    height: 100%
+    object-fit: cover
+    object-position: center
+
+.backdrop
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 1
+  background: rgba(0, 0, 0, 0.29)
+  transition: 350ms
+
+.curtain
+  position: absolute
+  top: -10%
+  bottom: -10%
+  width: 105%
+  right: 50%
+  transform: translateX(50%)
+  max-width: 100vw
+  background: colors.$primary
+  z-index: 1
+
+.black
+  background: colors.$primary
+
+.white
+  background: white
+
+.img_loading
+  position: absolute
+  z-index: 100
+  width: 100%
+  height: 100%
+  margin: 0 auto
+  display: flex
+  justify-content: center
+  align-items: center
+  & > div
+    width: 50%
+
+.hiddenImgCurtain
+  & .curtain
+    height: 100%
+
+.activeImgCurtain
+  & .curtain
+    height: 0
+    transition: 450ms
+
+.hide_load
+  pointer-events: none

@@ -1,0 +1,41 @@
+@use '../assets/styles/media'
+
+.content
+  width: 100%
+  position: relative
+  height: fit-content
+
+.content_wrapper
+  position: relative
+  width: 100%
+  padding: 50px 20px 70px
+  z-index: 2
+  background: white
+  height: fit-content
+
+.wrapper_back
+  pointer-events: none
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background: white
+  position: absolute
+
+@media (min-width: media.$medium)
+  .content
+    padding-bottom: 60px
+
+  .content_wrapper
+    width: 90vw
+    padding: 3.5rem 5vw 65px
+    margin: 0 auto 0
+
+@media (min-width: media.$large)
+  .content
+    padding-bottom: 90px
+
+  .content_wrapper
+    width: 87vw
+    padding: 5vw 5vw 65px 8vw
+    margin: 0 auto 0

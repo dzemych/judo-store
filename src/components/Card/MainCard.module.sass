@@ -1,0 +1,256 @@
+@use '../../assets/styles/colors'
+@use '../../assets/styles/media'
+
+
+.container
+  width: 100%
+
+.wrapper
+  position: relative
+  display: flex
+  flex-direction: column
+
+.basket
+  position: absolute
+  top: 0
+  right: 0
+  margin: 17px
+  font-size: 1.5rem
+  color: white
+
+.image_container
+  max-height: 80vh
+  height: calc((100vw - 2rem) * .7)
+  width: 100%
+
+.content
+  width: fit-content
+  pointer-events: none
+  padding-top: 1.2rem
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  z-index: 1
+  & > *
+    pointer-events: initial
+
+
+.title, .date, .before_title, .after_title
+  font-family: "BigNoodle", sans-serif
+  text-transform: uppercase
+
+.before_title
+  font-size: 1.2rem
+  margin-bottom: .6rem
+  letter-spacing: .05rem
+
+.after_title
+  font-size: 1.2rem
+  letter-spacing: .05rem
+  margin-bottom: .6rem
+  text-transform: uppercase
+
+.title
+  margin: 0 0 .6rem
+  font-size: 1.8rem
+  line-height: 1.8rem
+  font-weight: 500
+
+.date
+  font-size: 1rem
+  letter-spacing: .12rem
+  margin-bottom: .85rem
+
+.text
+  line-height: 1.35rem
+  font-size: .93rem
+
+.btn_container
+  margin-top: 1.3rem
+
+.normal
+  & .btn_container
+    margin-top: 1rem
+  & .content
+    padding-right: .2rem
+    padding-left: .2rem
+
+.moved_up
+  & .content
+    padding: 0 .95rem
+    margin-top: -3.2rem
+  & .title
+    font-size: 1.65rem
+    line-height: 1.7rem
+  & .text
+    line-height: 1.2rem
+
+.with_paddings
+  & .content
+    margin: 0
+    padding: 30px 20px 20px
+  & .text
+    font-size: 1rem
+  & .image_container
+    height: calc((100vw - 2rem) * .9)
+
+.row_content
+  width: 100% !important
+  & .wrapper
+    flex-direction: row
+    justify-content: space-between
+  & .image_container
+    max-height: 34vw
+    width: 65%
+  & .content
+    padding-top: 3rem
+    width: 30%
+
+.white_filled
+  & .content
+    background: white
+    color: #0a0a0a
+    & .text
+      color: #757575
+
+.black_transparent
+  & .content
+    color: #0a0a0a
+  & .text
+    color: #757575
+
+.white_transparent
+  & .content
+    color: white
+  & .text
+    color: #b5b5b5
+
+
+.tall_img
+  .image_container
+    height: 350px
+
+.basket_container
+  display: flex
+  flex-direction: column
+  width: 100%
+  min-width: 250px
+
+.basket_row
+  width: 100%
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  margin-bottom: 15px
+  & > div:first-child
+    text-transform: uppercase
+  & > div:last-child
+    color: #4b4b4b
+
+.count_container
+  display: flex
+  flex-direction: row
+  font-size: 1.5rem
+  & svg
+    transition: 280ms
+    cursor: pointer
+  & > svg:first-child
+    margin-right: 40px
+    margin-left: 10px
+  & svg:hover
+    scale: 1.1
+
+@media (min-width: media.$small)
+  .image_container
+    max-height: 70vh
+  .moved_up
+    & .content
+      padding: 0 1.8rem
+      margin-top: -5em
+    & .title
+      margin-bottom: 1rem
+      font-size: 2rem
+    & .before_title, & .after_title
+      font-size: 1.4rem
+      margin-bottom: .75rem
+    & .text
+      font-size: 1.1rem
+
+@media (min-width: media.$medium)
+  .image_container
+    max-height: 28vw
+
+  .moved_up
+    & .content
+      padding: 0 1.45rem
+    & .before_title
+      font-size: 1.23rem
+      margin-bottom: .8rem
+    & .title
+      font-size: 2.4rem
+      line-height: 106%
+    & .date
+      font-size: 1.5rem
+    & .text
+      font-size: 1.3rem
+
+  .tall_img
+    & .image_container
+      max-height: 34vw
+
+  .btn_container
+    margin-top: 1.6rem
+
+@media (min-width: media.$large)
+  .basket
+    margin: 20px
+    font-size: 2rem
+    cursor: pointer
+    transition: 280ms
+    &:hover
+      color: #e7e2e2
+
+  .title
+    line-height: 110%
+
+  .image_container
+    max-height: 22vw
+
+  .moved_up .content
+    margin-top: -5rem
+
+  .tall_img .image_container
+    max-height: 25vw
+
+@media (min-width: media.$extLarge)
+  .image_container
+    max-height: 14vw
+
+  .title, .moved_up .title
+    font-size: 1.95rem !important
+    margin-bottom: .6rem
+  .before_title, .moved_up .before_title, .after_title, .moved_up .after_title
+    font-size: 1.25rem !important
+    margin-bottom: .6rem
+  .date, .moved_up .date
+    font-size: 1.2rem !important
+  .text, .moved_up .text
+    font-size: 1.03rem !important
+
+  .row_content
+    width: 100% !important
+    & .wrapper
+      flex-direction: row
+      justify-content: space-between
+    & .image_container
+      max-height: 28vw
+      width: 65%
+    & .content
+      padding-top: 3rem
+      width: 30%
+
+  .tall_img
+    & .image_container
+      max-height: 25vw
+    & .title
+      font-size: 1.75rem !important

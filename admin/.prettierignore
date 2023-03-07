@@ -1,0 +1,7 @@
+.yarn
+dist
+node_modules
+build
+assets
+src/build
+src/dist

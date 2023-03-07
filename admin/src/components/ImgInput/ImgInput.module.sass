@@ -1,0 +1,129 @@
+.container
+  width: 100%
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+
+.input_wrapper
+  margin: auto 15px auto 0 !important
+  cursor: pointer
+
+.input_wrapper input, .input_wrapper label
+  cursor: pointer
+
+.img_container
+  max-width: 25%
+  max-height: 90px
+  & img
+    height: 100%
+    max-width: 100%
+    object-fit: contain
+    object-position: center
+
+.main_item
+  height: 100px !important
+
+.item_container
+  position: relative
+  width: 100%
+  height: 80px
+  border: 1px solid #868686
+  border-radius: 3px
+
+.item_action_container
+  position: absolute
+  z-index: 100
+  background: rgba(128, 128, 128, 0.8)
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  padding: 5px 14px
+  display: flex
+  flex-direction: column
+  opacity: 0
+  transition: 350ms
+  &:hover
+    opacity: 1
+
+.item_action_btn_row
+  width: 100%
+  height: 50%
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
+  padding: 4px 0
+  & svg
+    font-size: 1.8rem
+    cursor: pointer
+    height: 100%
+    color: #1a1a1a
+    transition: 200ms
+    &:hover
+      transform: scale(1.2)
+
+.item_img_wrapper
+  position: relative
+  width: 100%
+  height: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  & img
+    width: 100%
+    height: auto
+    max-height: 100%
+    object-position: center
+    object-fit: cover
+
+.item_img_loader
+  position: absolute
+  z-index: 1000
+  width: 100%
+  height: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  background: transparent
+  transition: 250ms
+
+.first_title
+  height: 20px
+  letter-spacing: 20px
+
+.bigBtn
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  & svg
+    font-size: 3rem
+    cursor: pointer
+    transition: 280ms
+    &:hover
+      transform: scale(1.2)
+
+.img_preview
+  margin-left: 30px
+  display: flex
+  flex-direction: row
+  align-items: center
+  flex-wrap: wrap
+  width: 100%
+
+@media (max-width: 600px)
+  .container
+    margin-top: 20px
+    flex-direction: column
+
+  .input_wrapper
+    margin: 0 0 10px 0 !important
+
+@media (min-width: 1200px)
+  .item_container
+    height: 120px
+
+  .main_item
+    height: 200px

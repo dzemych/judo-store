@@ -1,0 +1,85 @@
+@use '../../../assets/styles/media.sass'
+
+.container
+  width: 60%
+
+.wrapper
+  width: 100%
+  display: flex
+  flex-direction: row
+  justify-content: flex-end
+  align-items: center
+  transform: translateY(10%)
+  padding-right: 30px
+  & > div
+    margin-left: 50px
+
+.link_container
+  pointer-events: initial
+  cursor: pointer
+  position: relative
+  padding: .75rem 1.5rem
+  -webkit-tap-highlight-color: transparent
+  & a
+    -webkit-tap-highlight-color: transparent
+    position: relative
+    z-index: 10
+    transition: 280ms ease-in-out
+    color: white
+    font-family: BigNoodle, sans-serif
+    font-size: 1.2rem
+    letter-spacing: .1rem
+    text-decoration: none
+    outline: none
+  &:hover
+    & a
+      color: #222222
+      z-index: 100
+    & .left_curtain
+      width: 50%
+    & .right_curtain
+      width: 50%
+
+.left_curtain, .right_curtain
+  transition: 280ms ease-in-out
+  background: white
+  position: absolute
+  height: 100%
+  width: 0
+  top: 50%
+  transform: translateY(-50%)
+
+.left_curtain
+  right: 49%
+  border-bottom-left-radius: 1.5px
+  border-top-left-radius: 1.5px
+
+.right_curtain
+  left: 49%
+  border-bottom-right-radius: 1.5px
+  border-top-right-radius: 1.5px
+
+.active_link
+  & a
+    color: #222222
+    z-index: 100
+  & .left_curtain
+    width: 51%
+  & .right_curtain
+    width: 51%
+
+@media (min-width: media.$large)
+  .container
+    width: 70%
+
+@media (min-width: 1300px)
+  .container
+    width: 65%
+
+@media (min-width: 1400px)
+  .container
+    width: 60%
+
+@media (min-width: media.$extLarge)
+  .container
+    width: 56%

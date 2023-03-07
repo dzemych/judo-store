@@ -1,0 +1,89 @@
+@use '../../../assets/styles/colors'
+@use '../../../assets/styles/media'
+
+
+$offwhite: white
+$darkblue: rgb(93, 93, 94)
+
+.container
+  cursor: pointer
+  position: relative
+  min-width: 165px
+  font-family: 'BigNoodle', sans-serif
+  letter-spacing: .15rem
+  font-weight: 550
+  text-transform: uppercase
+  font-size: 18px
+  transition: color 0.5s, transform 0.2s, background-color 0.2s
+  border-radius: 3px
+  margin: 0
+  padding: 1.15rem 2rem
+  background-color: transparent
+  text-decoration: none
+  outline: none
+  border: none
+  overflow: hidden
+  box-shadow: none
+  z-index: 0
+  &:active
+    transform: translateY(4px)
+  &::after, &::before
+    border-radius: 3px
+  &::before
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    transition: 0.3s
+    z-index: -2
+  &:hover::before
+    opacity: 0
+  &::after
+    content: ""
+    position: absolute
+    top: 50%
+    left: 50%
+    height: 0
+    width: 110%
+    padding-bottom: 110%
+    border: transparent
+    border-radius: 50%
+    transform: translate(-50%, -50%) scale(0.1)
+    opacity: 0
+    z-index: -1
+    transition: 0.3s
+  &:hover::after
+    opacity: 1
+    transform-origin: 100px 100px
+    transform: scale(1) translate(-50%, -50%)
+
+.black
+  color: colors.$primary
+  &:hover
+    color: darken(white, 5%)
+  &::before
+    border: 2px solid colors.$primary
+  &::after
+    background: colors.$primary
+
+.white
+  color: darken(white, 5%)
+  &:hover
+    color: colors.$primary
+  &::before
+    border: 2px solid darken(white, 10%)
+  &::after
+    background: darken(white, 5%)
+
+
+@media (min-width: media.$medium)
+  .container
+    font-size: 1.4rem
+    padding: 1.5rem 3.1rem
+
+@media (min-width: media.$large)
+  .container
+    font-size: 1.2rem
+    padding: 1.2rem 2.6rem

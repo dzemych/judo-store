@@ -1,0 +1,20 @@
+@use '../../../assets/styles/media'
+
+.container
+  margin: 25vh auto
+  height: 50vh
+  color: white
+  font-family: BigNoodle, sans-serif
+  text-align: center
+  letter-spacing: .2rem
+  font-size: 1.2rem
+
+@media (min-width: media.$medium)
+  .container
+    letter-spacing: .3rem
+    font-size: 2rem
+
+@media (min-width: media.$large)
+  .container
+    letter-spacing: .3rem
+    font-size: 1.7rem

@@ -1,0 +1,215 @@
+@use '../../../assets/styles/media'
+
+
+.container
+  position: relative
+  display: flex
+  flex-direction: column
+  width: 100%
+  margin: 0 auto
+
+.title
+  width: 100%
+  font-family: "BigNoodle", sans-serif
+  text-transform: uppercase
+  margin-bottom: 2.8rem
+  margin-top: 0
+  font-size: 1.6rem
+  letter-spacing: .1rem
+  font-weight: 600
+  z-index: 1
+  & h3
+    margin: 0
+
+.list
+  display: flex
+  align-items: center
+  flex-direction: column
+  width: 100%
+  & > div:nth-child(n+2)
+    margin-top: 2.5rem
+
+.loader_container
+  width: 100%
+  height: 60vh
+  margin-top: 5vh
+  & > div
+    width: 50%
+    margin: 0 auto
+
+.empty_list
+  margin: 0 auto
+  & h1
+    text-align: center
+    font-family: BigNoodle, sans-serif
+    letter-spacing: .15rem
+    margin-top: 0
+    line-height: 140%
+    font-size: 1.5rem
+    font-weight: 600
+
+.black_transparent
+  & .title, & .empty_list h1
+    color: #222222
+
+.white_filled, .white_transparent
+  & .title, & .empty_list h1
+    color: #f5f5f5
+
+@media (min-width: media.$small)
+  .container
+    padding: 0 7vw
+  .title
+    font-size: 1.7rem
+    margin-bottom: 3rem
+  .list > div
+    max-width: 100%
+    width: 100%
+  .normal
+    & .list > div
+      margin-top: 2.7rem
+
+@media (min-width: media.$medium)
+  .container
+    padding: 0 9vw
+
+  .normal
+    padding: 0
+
+  .title
+    font-size: 2rem
+    margin-bottom: 2.5rem
+
+  .empty_list h1
+    font-size: 2.2rem
+
+  .list
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: space-between
+    align-items: flex-start
+    & > div
+      width: 47.5%
+    & > div:nth-child(1)
+      margin-top: 0 
+    & > div:nth-child(2)
+      margin-top: 2rem 
+    & > div:nth-child(odd)
+      margin-top: 2rem
+    & > div:nth-child(even)
+      margin-top: 4rem
+    & > div:nth-child(6)
+      margin-top: 4rem
+
+  .tall_img
+    padding: 0 4.5vw
+    & .list
+      padding: 0 1vw
+    & .list > div
+      width: 42%
+
+@media (min-width: media.$large)
+  .title
+    font-size: 2rem
+    letter-spacing: .13rem
+
+  .list
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: flex-start
+    & > div:first-child:nth-last-child(3)
+      justify-content: flex-start
+    & > div
+      width: 47.5%
+    & > div:nth-child(odd)
+      margin-right: 3.5vw
+
+  .secondary .list
+    & > div
+      margin-right: 0 
+    & > div:nth-child(1)
+      margin-top: 0 
+    & > div:nth-child(2)
+      margin-top: 2rem 
+    & > div:nth-child(odd)
+      margin-top: 2rem
+    & > div:nth-child(even)
+      margin-top: 4rem
+    & > div:not(:nth-child(2n))
+      margin-right: 3.5vw 
+
+  .tall_img
+    padding: 0
+    & .list
+      padding: 0
+      justify-content: flex-start
+      & > div
+        width: 20vw
+        margin: 0 
+      & > div:not(:nth-child(3n))
+        margin-right: 4vw 
+      & > div:nth-child(n + 4)
+        margin-top: 1.5rem 
+
+@media (min-width: media.$extLarge)
+  .container
+    padding: 0 6vw
+    align-items: flex-start
+
+  .title
+    width: fit-content
+    margin-left: 5vw
+    margin-bottom: 4.5rem
+    letter-spacing: .22rem
+    font-size: 1.95rem
+
+  .list
+    padding-left: 6vw
+    & > div
+      width: 20vw
+      margin: 0
+      margin-right: 3.5vw
+    & > div:nth-child(3n)
+      margin-right: 0
+    & > div:nth-child(odd)
+      margin-top: 2.7rem
+    & > div:nth-child(2n)
+      margin-top: 2.7rem
+    & > div:nth-child(3n + 2)
+      margin-top: 3.5vw
+
+  .secondary
+    padding: 0
+    & .list
+      padding-left: 5vw
+    & .list > div
+      width: 30%
+      margin-right: 3vw !important
+      margin-top: 2.5rem
+      &:nth-child(odd)
+        margin-top: 2.5rem
+      &:nth-child(n + 2)
+        margin-top: 2.5rem
+      &:nth-child(3n + 2)
+        margin-top: 4rem
+      &:nth-child(3n)
+        margin-right: 0 !important
+
+  .tall_img
+    padding: 0
+    padding-left: 4vw
+    & .title
+      margin: 0 0 4rem
+    & .list
+      padding: 0
+      justify-content: flex-start
+      & > div
+        width: 20vw
+        margin: 0 
+      & > div:not(:nth-child(3n))
+        margin-right: 4vw 
+
+  .proper_row_for_three
+    justify-content: flex-start 
+    & > div:nth-child(2)
+      margin-right: 3vw 

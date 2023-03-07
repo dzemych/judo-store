@@ -1,0 +1,40 @@
+@use 'colors'
+
+
+*, *::after, *::before
+  box-sizing: border-box
+  -webkit-tap-highlight-color: transparent
+
+
+html, body
+  scroll-behavior: smooth
+  font-family: "Roboto Regular", sans-serif
+  letter-spacing: normal
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+
+html
+  overflow: hidden
+
+body
+  width: 100%
+  height: 100%
+  position: fixed
+  overflow-y: scroll
+  overflow-x: hidden
+  -webkit-overflow-scrolling: touch
+  &::-webkit-scrollbar
+    display: none
+
+a
+  color: inherit
+  text-decoration: none
+
+@media (prefers-color-scheme: dark)
+  html
+    color-scheme: dark
+
+  body
+    color: white
+    background: colors.$primary
