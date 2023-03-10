@@ -1,5 +1,5 @@
-import {IOrderState, ITextInput} from "../../types/form.types"
-import {ObjWithStrKeys} from "../../types/global.types"
+import {IOrderState, ITextInput} from "../types/form.types"
+import {ObjWithStrKeys} from "../types/global.types"
 
 
 export const getInputs = (
