@@ -29,7 +29,7 @@ then
   echo "Deleted server/public/admin folder (admin front end"
 fi
 
-mv admin/build server/assets/admin
+mv admin/build server/public/admin
 echo "Client front moved to server public folder"
 
 echo "Project is ready for production start !!!!!!"
