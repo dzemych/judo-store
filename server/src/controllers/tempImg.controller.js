@@ -44,7 +44,7 @@ exports.uploadTempImg = catchAsync(async (req, res, next) => {
 
 exports.deleteCollection = catchAsync(async (req, res, next) => {
    deleteDir([
-      'assets/img/temp',
+      'public/img/temp',
       `${req.params.collection}`
    ].join('/'))
 
@@ -53,7 +53,7 @@ exports.deleteCollection = catchAsync(async (req, res, next) => {
 
 exports.deleteFolder = catchAsync(async (req, res, next) => {
    deleteDir([
-      'assets/img/temp',
+      'public/img/temp',
       `${req.params.collection}-${req.params.folderId}`
    ].join('/'))
 
@@ -63,7 +63,7 @@ exports.deleteFolder = catchAsync(async (req, res, next) => {
 exports.deleteTempImg = catchAsync(async (req, res, next) => {
    deleteDir(
       [
-         'assets/img/temp',
+         'public/img/temp',
          `${req.params.collection}-${req.params.timeStamp}`,
          `${req.params.imgId}`,
       ].join('/')

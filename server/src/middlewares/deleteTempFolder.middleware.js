@@ -6,8 +6,8 @@ const deleteTempFolder = function(req, res, next) {
       const code = res.statusCode
       const changeData = req.method.match(/(put|post|patch|delete)/i)
 
-      if (!changeData && code < 300)
-         next()
+      if (!changeData || code > 300)
+         return
 
       const contype = req.headers['content-type']
 

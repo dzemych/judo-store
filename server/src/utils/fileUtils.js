@@ -125,7 +125,6 @@ exports.updateMainPhotoAndBack = async (photo, modelName, item, next) => {
 
    // 2) Create dir for main and back imgs
    const dirPath = `public/img/${modelName}/${id}`
-   // const tempDir = `assets/${photo.split('/').slice(3, -1).join('/')}`
    try {
       await checkAndCreateDir(dirPath)
    } catch (e) {
