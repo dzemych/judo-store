@@ -65,16 +65,10 @@ app.use('/api', apiRoutes)
 app.use('/admin', adminRoutes)
 
 app.use('/img', express.static(path.resolve('public/img')))
-app.use('/icons/favicon.png', express.static(path.resolve('public/favicon.png')))
-app.use((req, res, next) => {
-   if (req.url === '/icons/favicon.png')
-      console.log('/////////////')
-
-   next()
-})
-app.use('/icons/favicon16x16.png', express.static(path.resolve('public/favicon16x16.png')))
-app.use('/icons/favicon32x32.png', express.static(path.resolve('public/favicon32x32.png')))
-app.use('/icons/favicon180x180.png', express.static(path.resolve('public/favicon180x180.png')))
+app.use('/favicon.png', express.static(path.resolve('public/favicon.png')))
+app.use('/favicon16x16.png', express.static(path.resolve('public/favicon16x16.png')))
+app.use('/favicon32x32.png', express.static(path.resolve('public/favicon32x32.png')))
+app.use('/favicon180x180.png', express.static(path.resolve('public/favicon180x180.png')))
 
 app.use('/admin', express.static(path.resolve('public/admin')))
 app.use('/admin/**', express.static(path.resolve('public/admin')))
