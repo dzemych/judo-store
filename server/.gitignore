@@ -4,8 +4,8 @@ src/html/admin
 .next
 next
 public/*
-!public/icons/favicon.png
-!public/icons/favicon16x16.png
-!public/icons/favicon32x32.png
-!public/icons/favicon180x180.png
+!public/favicon.png
+!public/favicon16x16.png
+!public/favicon32x32.png
+!public/favicon180x180.png
 config.env
