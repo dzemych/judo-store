@@ -6,10 +6,9 @@ const {
    getAbsPath,
    deleteDir,
    renamePhotoAndGetPath,
-   getRelPhotoPath, generateNewRelPhotoPath, resizeAndWritePhoto, updatePhotosList,
+   generateNewRelPhotoPath,
+   updatePhotosList,
 } = require("../utils/fileUtils");
-const fs = require("fs")
-const path = require("path")
 
 
 
@@ -54,6 +53,7 @@ exports.getOne = catchAsync(async (req, res, next) => {
    // ObjectId.isValid not working correctly with certain slugs
    const isId = ObjectId.isValid(id) && id.split('-').length < 2
 
+   console.log(id, isId)
    const item = await Product.findOne(isId ? { _id: id } : { slug: id })
 
    if (!item)
@@ -75,7 +75,7 @@ exports.deleteOne = catchAsync(async (req, res, next) => {
 
    deleteDir([
       'public/img',
-      modelName.toLowerCase(),
+      'product'.toLowerCase(),
       req.params.slug
    ].join('/'))
 
