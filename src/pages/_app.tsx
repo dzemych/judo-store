@@ -65,9 +65,9 @@ function MyApp({ Component, pageProps }: AppProps) {
          <WithGlobalData>
             <Head>
                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-               <meta name='description' content='Блог про секцію дзюдо новатор у місті Хмельницький'/>
+               <meta name='description' content='Judo store, store with items for judo'/>
 
-               <title>Дзюдо Новатор | Judo Novator</title>
+               <title>Judo Store</title>
             </Head>
 
             <AppContext.Provider value={{

@@ -13,8 +13,8 @@ const Home: NextPage = () => {
    return (
       <>
          <Head>
-            <meta name='description' content='Головна сторінка блогу дзюдо новатор | блог | події | галерея | команда '/>
-            <title>Дзюдо Новатор | Головна сторінка</title>
+            <meta name='description' content='Main page of judo store, our products'/>
+            <title>Judo Store | Our products</title>
          </Head>
 
          <div className={classes.container}>

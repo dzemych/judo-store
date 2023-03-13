@@ -54,8 +54,8 @@ const Contact: FC = () => {
    return (
       <>
          <Head>
-            <meta name='description' content='Контакти секції дзюдо новатор, як нас знайти'/>
-            <title>Дзюдо Новатор | Наші контакти</title>
+            <meta name='description' content='Judo store contacts section, how to reach us'/>
+            <title>Judo Store | Our contacts</title>
          </Head>
 
          <div className={classes.container}>
@@ -64,14 +64,14 @@ const Contact: FC = () => {
 
             <OpacityDiv showAnimation={data} className={classes.wrapper}>
                <h2 className={classes.title}>
-                  Наші контакти
+                  Our contacts
                </h2>
 
                <div className={classes.contacts} style={{ paddingLeft: '8px' }}>
                   { data.tels &&
                      <div className={classes.row} key={'tels'} style={{ marginBottom: '18px' }}>
                         <div className={classes.row_title}>
-                           Телефон:
+                           Phone number:
                         </div>
 
                         <div className={classes.row_text}>
@@ -79,12 +79,12 @@ const Contact: FC = () => {
                         </div>
                      </div>
                   }
-                  { renderRow('email', 'Імейл') }
+                  { renderRow('email', 'Email') }
                </div>
 
                { data.address &&
                   <>
-                     <h2 className={classes.title}>Наша адреса</h2>
+                     <h2 className={classes.title}>Our address</h2>
                      <div
                         className={classes.row_text}
                         style={{ width: 'fit-content', paddingLeft: '8px' }}

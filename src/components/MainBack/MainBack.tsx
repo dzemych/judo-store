@@ -42,7 +42,9 @@ const MainBack: FC<IProps> = (
          transition: {
             duration: .5,
             delay: .2,
-            yoyo: Infinity,
+            // yoyo: Infinity,
+            repeatType: 'reverse',
+            repeat: Infinity,
             ease: 'easeOut'
          }
       },
@@ -51,7 +53,9 @@ const MainBack: FC<IProps> = (
          transition: {
             duration: 1,
             delay: .2,
-            yoyo: Infinity,
+            // yoyo: Infinity,
+            repeatType: 'reverse',
+            repeat: Infinity,
             ease: 'easeOut'
          }
       }
@@ -153,7 +157,7 @@ const MainBack: FC<IProps> = (
             <OpacityYDiv className={titleCls.join(' ')}>
                <OpacityYDiv className={classes.title_text} showAnimation={!!title || !!fetchedTitle}>
                   <div>
-                     {beforeTitle ? beforeTitle : ''} $
+                     {beforeTitle ? `${beforeTitle} $` : ''}
                   </div>
                   <div>
                      {title ? title : fetchedTitle}
@@ -163,6 +167,7 @@ const MainBack: FC<IProps> = (
                { showBtn && (type === 'wide') &&
                   <motion.div
                      className={classes.wide_wrapper}
+                     // @ts-ignore
                      variants={arrowVariants}
                      onClick={scrollToContent}
                      animate='wide'
@@ -179,6 +184,7 @@ const MainBack: FC<IProps> = (
 
             { (showBtn && type !== 'wide') &&
                <motion.div
+                  // @ts-ignore
                   variants={arrowVariants}
                   className={classes.arrow_container}
                   onClick={scrollToContent}

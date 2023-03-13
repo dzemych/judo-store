@@ -25,8 +25,8 @@ const About: FC = () => {
    return (
       <>
          <Head>
-            <meta name='description' content='Історія секції дзюдо новатор у місті Хмельницький'/>
-            <title>Дзюдо Новатор | Про нас</title>
+            <meta name='description' content='About us, our history'/>
+            <title>Judo Store | About us</title>
          </Head>
 
          <div className={classes.container}>

@@ -50,7 +50,7 @@ const Product: FC<IProps> = ({ slug }) => {
 
    return (
       <>
-         <RecordHead title='Запис' text={item.title}/>
+         <RecordHead title='Product' text={item.title}/>
 
          <FixedBackLayout
             backImgSrc={item?.backPhoto}

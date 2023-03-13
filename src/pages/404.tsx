@@ -6,7 +6,7 @@ import classes from 'src/assets/styles/404.module.sass'
 const Custom404: FC = () => {
    return (
       <OpacityYDiv className={classes.container}>
-         <h1>Сторінку не знайдено</h1>
+         <h1>Page not found</h1>
 
          <div className={classes.hr}/>
 
