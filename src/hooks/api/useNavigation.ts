@@ -1,11 +1,13 @@
-import {useCallback, useEffect, useState} from "react"
+import {useCallback, useContext, useEffect, useState} from "react"
 import {IArticleCard} from "../../types/content/article"
 import useHttp from "./useHttp"
 import {NavigationHook} from "../../types/IUseNavigation"
 import {FetchStatus} from "../../types/status"
+import {useAppSelector} from "../useRedux"
 
 
 const useNavigation: NavigationHook = (limit) => {
+   const vw = useAppSelector(state => state.mediaReducer.vw)
    const { requestJson, loading } = useHttp()
 
    const [page, setPage] = useState(1)
@@ -20,7 +22,7 @@ const useNavigation: NavigationHook = (limit) => {
       return arr
    }
 
-   const fetchElements = useCallback(async () => {
+   const setCurPageElements = useCallback(async () => {
       const select = '-content,-photos'
 
       let teamFilter = ''
@@ -30,7 +32,12 @@ const useNavigation: NavigationHook = (limit) => {
       const res = await requestJson(url)
 
       if (res && res.items && res.items.length) {
-         setElements(getProperElements(res.items))
+
+         setElements(prev => {
+            const x = getProperElements(res.items)
+
+            return [...prev, ...x]
+         })
 
          const pages = res.colLength / limit
          setPagesCount(Math.ceil(pages))
@@ -42,26 +49,20 @@ const useNavigation: NavigationHook = (limit) => {
 
    // 1) Load initial elements
    useEffect(() => {
-      fetchElements()
-   }, [fetchElements])
+      if (vw)
+         setCurPageElements()
+   }, [setCurPageElements, vw])
 
-   const nextPageHandler = () => {
-      if (page < pagesCount)
-         setPage(prev => prev + 1)
-   }
-
-   const prevPageHandler = () => {
-      if (page > 1)
-         setPage(prev => prev - 1)
+   const loadMore = () => {
+      setPage(prev => prev + 1)
    }
 
    return {
       page,
       pagesCount,
       elements,
-      nextPageHandler,
-      prevPageHandler,
       loading,
+      loadMore,
       status
    }
 }

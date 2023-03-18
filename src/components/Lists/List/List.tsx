@@ -8,6 +8,7 @@ import MainCardSkeleton from "@components/Card/MainCardSkeleton"
 import OpacityYDiv from "@components/UI/OpacityYDiv"
 import {ArticleCardContent, ArticleCardTheme, IArticleCard} from "../../../types/content/article"
 import {useAppSelector} from "../../../hooks/useRedux"
+import Button from "../../UI/Button/Button"
 
 
 interface IProps {
@@ -36,8 +37,7 @@ const List: FC<IProps> =
       const {
          page,
          pagesCount,
-         nextPageHandler,
-         prevPageHandler,
+         loadMore,
          elements,
          loading,
          status
@@ -113,14 +113,14 @@ const List: FC<IProps> =
       }
 
       useEffect(() => {
-         const vh = window.innerHeight
-
-         if (status !== FetchStatus.INIT) {
-            if (large)
-               document.body.scroll(0, vh * .25)
-            else
-               document.body.scroll(0, vh * .602)
-         }
+         // const vh = window.innerHeight
+         //
+         // if (status !== FetchStatus.INIT) {
+         //    if (large)
+         //       document.body.scroll(0, vh * .25)
+         //    else
+         //       document.body.scroll(0, vh * .602)
+         // }
       }, [page])
 
       return (
@@ -137,6 +137,12 @@ const List: FC<IProps> =
             <div className={listCls.join(' ')}>
                {renderList()}
             </div>
+
+            { page < pagesCount &&
+               <Button style={{ marginTop: 60 }} color={'white'} onClick={loadMore}>
+                  Load more
+               </Button>
+            }
          </div>
       )
    }

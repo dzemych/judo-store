@@ -53,7 +53,6 @@ exports.getOne = catchAsync(async (req, res, next) => {
    // ObjectId.isValid not working correctly with certain slugs
    const isId = ObjectId.isValid(id) && id.split('-').length < 2
 
-   console.log(id, isId)
    const item = await Product.findOne(isId ? { _id: id } : { slug: id })
 
    if (!item)

@@ -1,4 +1,4 @@
-import {FC} from "react"
+import {CSSProperties, FC} from "react"
 import classes from './Button.module.sass'
 
 
@@ -6,14 +6,16 @@ interface IProps {
    children: string | React.ReactNode,
    color: 'white' | 'black'
    onClick?: () => void
+   style?: CSSProperties
 }
 
 
 const Button: FC<IProps> =
    ({
        children,
-       color= 'white',
-       onClick
+       color = 'white',
+       onClick,
+       style
    }) => {
 
    const cls = [classes.container]
@@ -26,6 +28,7 @@ const Button: FC<IProps> =
 
    return (
       <button
+         style={style}
          className={cls.join(' ')}
          onClick={onClick}
       >
